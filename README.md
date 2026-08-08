@@ -8,6 +8,12 @@ Built with **Claude Sonnet 5** (structured-output reasoning) and **Gemini 2.5 Fl
 
 ---
 
+<p align="center">
+  <img src="./assets/hackerrank_certificate.png" alt="HackerRank Orchestrate Certificate" width="600"/>
+</p>
+
+---
+
 ## Results
 
 Measured with `code/evaluation/main.py` and `code/evaluation/quality_checks.py` against `dataset/sample_messages.csv` (the only file with known-correct labels) and cross-checked against the full 110-message `dataset/messages.csv`:
