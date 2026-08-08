@@ -1,0 +1,31 @@
+# --- Secrets & credentials: never commit these ---
+.env
+*.env
+!.env.example
+*.pem
+*.key
+*.crt
+credentials.json
+*_credentials.json
+
+# --- Python virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Python build/runtime artifacts ---
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- This project's local disk caches (Gemini audio transcripts, etc.) ---
+code/cache/
+
+# --- OS / editor cruft ---
+.DS_Store
+*.log
