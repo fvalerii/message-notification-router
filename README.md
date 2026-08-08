@@ -200,3 +200,9 @@ This never touches `dataset/output.csv` or `.env` — only generated build/cache
 - **Domain Mismatch:** Currently relies on exact string equality. Production requires an eTLD+1 parser to prevent subdomain false positives (e.g., `updates.hdfcbank.in`).
 - **DND Time-Math:** DND window evaluation is currently delegated to the LLM. V2 should offload this to deterministic Python `datetime` logic before prompt assembly.
 - **Gemini Resilience:** The audio client currently only retries on 429s. Production release requires broader transient error handling (500/503) and aggressive cache-invalidation logic.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
