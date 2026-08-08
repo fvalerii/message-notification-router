@@ -1,4 +1,4 @@
-# Multimodal Message Notification Router (HackerRank Orchestrate Top 19% Finalist)
+# Multimodal Message Notification Router
 
 A multimodal WhatsApp notification router built for the **HackerRank Orchestrate** hackathon. For every incoming message — text, image poster/screenshot, or voice note — the system decides whether to **notify** the user now, **digest** it for later, or **mute** it, with a human-readable reason, a calibrated confidence score, and citations to relevant historical messages.
 
