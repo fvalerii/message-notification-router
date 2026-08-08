@@ -37,32 +37,39 @@ Note on reproducibility: `claude-sonnet-5` does not expose a `temperature` param
 ```text
 dataset/*.csv ──► Data Loader & Context Joins ──► MessageContext (per message)
                   (code/data/loader.py)                   │
-                                                            ▼
+                                                          ▼
                                           ┌───────────────────────────────┐
-                                          │ 1. Security Guardrails        │  deterministic, no API calls
-                                          │    code/guardrails/security.py│  prompt-injection + scam heuristics
+                                          │ 1. Initial Guardrails         │  deterministic text screening
+                                          │    code/guardrails/security.py│  (fast-path)
                                           └───────────────┬───────────────┘
-                                       hard_routed=True    │   hard_routed=False
-                                       (skip everything    │
-                                        below, mute now)   ▼
+                                       hard_routed=True   │    hard_routed=False
+                                       (skip everything   │
+                                        below, mute now)  ▼
                                           ┌───────────────────────────────┐
-                                          │ 2. Media Pre-processing       │
-                                          │    code/media/image.py        │  PIL resize/encode → base64
-                                          │    code/media/audio.py        │  Gemini 2.5 Flash transcription
+                                          │ 2. Media Pre-processing       │  PIL resize/encode → base64
+                                          │    code/media/image.py        │  Gemini 2.5 Flash
+                                          │    code/media/audio.py        │  audio transcription
                                           └───────────────┬───────────────┘
-                                                            ▼
+                                                          │
+                                                          ▼
                                           ┌───────────────────────────────┐
-                                          │ 3. Evidence Retrieval          │  rapidfuzz text similarity +
-                                          │    code/evidence/retrieval.py  │  behavioral signals from
+                                          │ 2b. Guardrail Re-Evaluation   │  rescan generated audio
+                                          │    code/guardrails/security.py│  transcripts for scams/injections
+                                          └───────────────┬───────────────┘
+                                       hard_routed=True   │    hard_routed=False
+                                       (mute now)         │
+                                                          ▼
+                                          ┌───────────────────────────────┐
+                                          │ 3. Evidence Retrieval         │  rapidfuzz text similarity +
+                                          │    code/evidence/retrieval.py │  behavioral signals from
                                           └───────────────┬───────────────┘  message_events.csv
-                                                            ▼
+                                                          ▼
                                           ┌───────────────────────────────┐
-                                          │ 4. LLM Routing                 │  Claude Sonnet 5, structured
-                                          │    code/routing/engine.py       │  output, retry on transient
-                                          │    code/routing/prompts.py      │  failures
-                                          │    code/routing/calibration.py  │  confidence/evidence sanitized
-                                          └───────────────┬───────────────┘  after the model call
-                                                            ▼
+                                          │ 4. LLM Routing                │  Claude Sonnet 5, structured
+                                          │    code/routing/engine.py     │  output, retry on transient
+                                          │    code/routing/prompts.py    │  failures, calibration
+                                          └───────────────┬───────────────┘
+                                                          ▼
                                           code/output/writer.py ──► dataset/output.csv
 ```
 
