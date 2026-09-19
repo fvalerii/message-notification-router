@@ -11,6 +11,7 @@ Built with **Claude Sonnet 5** (structured-output reasoning) and **Gemini 2.5 Fl
 <p align="center">
   <img src="./assets/hackerrank_certificate.png" alt="HackerRank Orchestrate Certificate" width="600"/>
 </p>
+*HackerRank Orchestrate Hackathon (Agust 2026) (Ranked 383 / 1.983)*
 
 ---
 
