@@ -2,6 +2,11 @@
 
 A multimodal WhatsApp notification router built for the **HackerRank Orchestrate** hackathon. For every incoming message — text, image poster/screenshot, or voice note — the system decides whether to **notify** the user now, **digest** it for later, or **mute** it, with a human-readable reason, a calibrated confidence score, and citations to relevant historical messages.
 
+![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg?style=flat-square&logo=python&logoColor=white)
+![Claude 5 Sonnet](https://img.shields.io/badge/Claude%205%20Sonnet-Anthropic-8A2BE2?style=flat-square)
+![Gemini 2.5 Flash](https://img.shields.io/badge/Gemini%202.5%20Flash-Audio%20Transcription-4285F4?style=flat-square)
+![Pydantic](https://img.shields.io/badge/Pydantic-Data%20Validation-e92063?style=flat-square)
+
 Built with **Claude Sonnet 5** (structured-output reasoning) and **Gemini 2.5 Flash** (voice-note transcription), on top of deterministic security guardrails and a text/behavioral evidence-retrieval engine.
 
 > The original challenge brief lives in [`problem_statement.md`](./problem_statement.md). This README documents the solution that was built against it.
@@ -11,7 +16,7 @@ Built with **Claude Sonnet 5** (structured-output reasoning) and **Gemini 2.5 Fl
 <p align="center">
   <img src="./assets/hackerrank_certificate.png" alt="HackerRank Orchestrate Certificate" width="600"/>
 </p>
-*HackerRank Orchestrate Hackathon (Agust 2026) (Ranked 383 / 1.983)*
+*HackerRank Orchestrate Hackathon (August 2026) (Ranked 383 / 1.983)*
 
 ---
 
